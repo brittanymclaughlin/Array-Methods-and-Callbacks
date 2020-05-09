@@ -154,19 +154,46 @@ Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
 function getCountryWins(data, initials) {
-    /* code here */
+let win = data.reduce((acc, match)=>{
+    if(match.Stage === "Final"){
+        let WinInitials;
+        if(match['Home Team Goals'] > match["Away Team Goals"]){
+            WinInitials = match["Home Team Name"].substr(0, 3).toUpperCase();
+        }else if(match["Home Team Goals"] < match["Away Team Goals"]){
+            WinInitials = match["Away Team Name"].substr(0, 3).toUpperCase();
+        }else{
+            WinInitials = match["Win conditions"].substr(0, 3).toUpperCase();
+        }
+        if(WinInitials === initials){
+            return acc + 1;
+        }
+    }
+    return acc;
+},0);
+return  initials + " : " + win;
+
 }
-//console.log(getCountryWins());
+console.log(getCountryWins(fifaData, "USA"));
 
 /* Task 8: Write a function called `getAverageGoals` that accepts a parameter `data` and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-function getAverageGoals(/* code here */) {
+function getAverageGoals(data) {
 
-    /* code here */
+let HomeTeamAvgGoals = data.reduce((goals, match, index)=>{
+    let Counter = index + 1;
+    return goals + match["Home Team Goals"] / Counter;
+},0);
+let AwayTeamAvgGoals = data.reduce((goals, match, index)=>{
+    let Counter = index + 1;
+    return goals + match["Away Team Goals"] / Counter;
+},0);
+return{
+    HomeTeamAvgGoals,AwayTeamAvgGoals
+}
 
 };
 
-getAverageGoals();
+console.log(getAverageGoals(fifaData));
 
 
 /// STRETCH 🥅 //
