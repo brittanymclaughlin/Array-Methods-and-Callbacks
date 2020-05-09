@@ -25,7 +25,7 @@ console.log(homename +  awayname + homegoals + awaygoals);
 if (finals["Home Team Goals"] > finals["Away Team Goals"]){
     console.log(finals["Home Team Name"]+ " is the winner of the 2014 World Cup Final!!");
     
-} else{ console.log;(finals["Away Team Name"] + " is the winner of the 2014 World Cup Final!!");
+} else{ console.log;(finals["Away Team Name"] + " is the winner of the 2014 World Cup Final!! \n");
 }
 
 
@@ -61,7 +61,7 @@ function getYears(callback, data) {
    });
    return years;
 };
-console.log("Years of World Cup Finals \n" + getYears(getFinals, fifaData));
+console.log("\nYears of World Cup Finals \n" + getYears(getFinals, fifaData));
     
     //const finalyears = []
    // for (let x = 0 ; x < finals.length ; x++){
@@ -112,7 +112,7 @@ function getWinners(callback, data) {
     
    // return winners;
 };
-console.log("World Cup Winners \n" + getWinners(getFinals, fifaData));
+console.log("\nWorld Cup Winners \n" + getWinners(getFinals, fifaData));
 getWinners(getFinals, fifaData);
 
 /* Task 6: Implement a higher-order function called `getWinnersByYear` that accepts the following parameters and returns a set of strings "In {year}, {country} won the world cup!" 
